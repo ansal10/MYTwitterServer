@@ -1,0 +1,66 @@
+GET /user  List of all users 
+
+response json 
+{
+  "results": [
+    {
+      "first_name": "Mohini",
+      "last_name": "Sindhu",
+      "email": "mohini.sindhu14@gmail.com",
+      "username": "mohini14"
+    },
+    {
+      "first_name": "Mohini",
+      "last_name": "Sindhu",
+      "email": "mohini.sindhu15@gmail.com",
+      "username": "mohini15"
+    }
+  ]
+}
+
+
+
+POST /user.  Register user 
+
+request JSON 
+{
+	"first_name":"Mohini",
+	"last_name":"Sindhu",
+	"username":"mohini15",
+	"email": "mohini.sindhu15@gmail.com",
+	"password":"mohini"
+}
+
+response JSON  <200> in case of success
+{
+  "results": {
+    "first_name": "Mohini",
+    "last_name": "Sindhu",
+    "email": "mohini.sindhu16@gmail.com",
+    "username": "mohini16"
+  }
+}
+
+response JSON <400> in case of already registered username or email
+{
+  "error": "User already registered with same username OR Email"
+}
+
+
+POST /user/login. Check for login of a user
+
+request JSON
+{
+	"username":"mohini15",
+	"password":"mohini"
+}
+
+response JSON: <200> successfull login
+{
+  "results": "login successful"
+}
+
+response JSON: <401> unsuccessfull login
+{
+  "error": "Username and Password not Matched"
+}
