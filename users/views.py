@@ -26,7 +26,7 @@ def index(request):
         user = Users(**data)
         user.save()
 
-        return JsonResponse({"results": user.to_json()})
+        return JsonResponse({"result": user.to_json()})
 
 
 @api_view(['POST'])
@@ -37,7 +37,7 @@ def login(request):
             return JsonResponse({"error": "%s is Required" % key}, status=400)
     user = Users.objects.filter(Q(username=data['username']) & Q(password=data['password']))
     if user.__len__() > 0:
-        return JsonResponse({"results": user[0].to_json()})
+        return JsonResponse({"result": user[0].to_json()})
     else:
         return JsonResponse({"error": "Username and Password not Matched"}, status=401)
 
