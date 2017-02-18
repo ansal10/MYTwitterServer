@@ -42,7 +42,7 @@ def login(request):
         return JsonResponse({"error": "Username and Password not Matched"}, status=401)
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def post(request, username=None):
     user = Users.objects.filter(Q(username=username))
     if not user.exists():
