@@ -53,8 +53,8 @@ def post(request, username=None):
     if request.method == 'POST':
         data = json.loads(request.body)
         for key in ['post']:
-            if data[key] is None:
-                return JsonResponse({"error": "%s is Required" % key})
+            if data.get(key) is None:
+                return JsonResponse({"error": "%s is Required" % key}, status=400)
 
         post = Post(**data)
         post.user = user
@@ -80,7 +80,7 @@ def comment(request, username=None, post_id=None):
 
     data = json.loads(request.body)
     for key in ['comment']:
-        if data[key] is None:
+        if data.get(key) is None:
             return JsonResponse({"error": "%s is required" % key}, status=400)
 
     comm = Comment(comment=data['comment'], user=user, post=post)

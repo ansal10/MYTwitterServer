@@ -70,3 +70,147 @@ response JSON: <401> unsuccessfull login
 {
   "error": "Username and Password not Matched"
 }
+
+
+GET /post
+
+response JSON: <200>
+
+{
+  "results": [
+    {
+      "post": "Looks like this is a great day",
+      "likes": 0,
+      "created_at": "2017-02-18T12:10:35.901Z",
+      "id": 1,
+      "user": {
+        "first_name": "Mohini",
+        "last_name": "Sindhu",
+        "email": "mohini.sindhu14@gmail.com",
+        "username": "mohini14"
+      }
+    },
+    {
+      "post": "Looks like this is a great day tomotrow",
+      "likes": 0,
+      "created_at": "2017-02-18T12:10:52.626Z",
+      "id": 2,
+      "user": {
+        "first_name": "Mohini",
+        "last_name": "Sindhu",
+        "email": "mohini.sindhu15@gmail.com",
+        "username": "mohini15"
+      }
+    }
+  ]
+}
+
+
+
+POST /user/<username>/post   POST a new post for username
+
+request JSON:
+{
+  "post": "Nice day today"
+}
+
+response JSON: <200>
+{
+  "result": {
+    "post": "Nice day today",
+    "likes": 0,
+    "created_at": "2017-02-18T15:22:11.776Z",
+    "id": 3
+  }
+}
+
+response JSON: <400>
+{
+  "error": "Posting post for Unknown User"
+}
+
+
+GET /post/1    # show post which have id 1
+
+response JSON <200>
+{
+  "result": {
+    "post": "Looks like this is a great day tomotrow",
+    "likes": 0,
+    "created_at": "2017-02-18T12:10:52.626Z",
+    "id": 2,
+    "user": {
+      "first_name": "Mohini",
+      "last_name": "Sindhu",
+      "email": "mohini.sindhu15@gmail.com",
+      "username": "mohini15"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "comment": "I gotta same feeling",
+        "likes": 0,
+        "created_at": "2017-02-18T12:11:39.134Z",
+        "user": {
+          "first_name": "Mohini",
+          "last_name": "Sindhu",
+          "email": "mohini.sindhu14@gmail.com",
+          "username": "mohini14"
+        }
+      },
+      {
+        "id": 2,
+        "comment": "I gotta same feeling",
+        "likes": 0,
+        "created_at": "2017-02-18T12:12:27.248Z",
+        "user": {
+          "first_name": "Mohini",
+          "last_name": "Sindhu",
+          "email": "mohini.sindhu14@gmail.com",
+          "username": "mohini14"
+        }
+      }
+    ]
+  }
+}
+
+error JSON <404>
+{
+  "error": "No post found for id 100"
+}
+
+
+POST /user/<username>/post/<post id>/comment
+
+request JSON
+{
+  "comment": "Nice Weather"
+}
+
+response JSON <200>
+{
+  "result": {
+    "id": 3,
+    "comment": "Nice Weather",
+    "likes": 0,
+    "created_at": "2017-02-18T16:44:59.027Z",
+    "user": {
+      "first_name": "Mohini",
+      "last_name": "Sindhu",
+      "email": "mohini.sindhu15@gmail.com",
+      "username": "mohini15"
+    },
+    "post": {
+      "post": "Looks like this is a great day",
+      "likes": 0,
+      "created_at": "2017-02-18T12:10:35.901Z",
+      "id": 1
+    }
+  }
+}
+
+error JSON <400>
+
+{
+  "error": "Cannot comment for unknown user or post"
+}
