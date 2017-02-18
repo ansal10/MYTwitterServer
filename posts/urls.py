@@ -13,11 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
+from django.conf.urls import url
+
+from posts import views
 
 urlpatterns = [
-    url(r'^mytwitter/post/', include('posts.urls')),
-    url(r'^mytwitter/user/', include('users.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'(?P<id>[0-9]+)$', view=views.show),  #GET to get post
+    url(r'^$', view=views.index),  # GET all posts
+
 ]
