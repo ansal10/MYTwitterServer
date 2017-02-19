@@ -11,7 +11,7 @@ from users.models import Users
 @api_view(['GET', 'POST'])
 def index(request):
     if request.method == 'GET':
-        users = Users.objects.defer('password').all()
+        users = Users.objects.defer('password').all().order_by('-updated_at')
         data = [user.to_json() for user in users]
         return JsonResponse({"results": data})
 

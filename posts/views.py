@@ -16,14 +16,14 @@ from users.models import Users
 
 @api_view(['GET'])
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-updated_at')
     posts = [p.to_json(keys=['user']) for p in posts]
     return JsonResponse({"results": posts})
 
 
 @api_view(['GET'])
 def show(request, id=None):
-    post = Post.objects.filter(Q(id=id))
+    post = Post.objects.filter(Q(id=id)).order_by('-updated_at')
     if not post.exists():
         return JsonResponse({"error": "No post found for id %s" % id}, status=404)
 

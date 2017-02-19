@@ -9,7 +9,7 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(Users, related_name='posts')
+    user = models.ForeignKey(Users, related_name='posts', db_index=True)
 
     def to_json(self, keys=[]):
         data = {
@@ -22,7 +22,7 @@ class Post(models.Model):
             data['user'] = self.user.to_json()
 
         if 'comments' in keys:
-            data['comments'] = [c.to_json(keys=['user']) for c in self.comments.all()]
+            data['comments'] = [c.to_json(keys=['user']) for c in self.comments.all().order_by('-updated_at')]
 
         return data
 

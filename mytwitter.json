@@ -72,10 +72,9 @@ response JSON: <401> unsuccessfull login
 }
 
 
-GET /post
+GET /post         fetch all post of all user
 
 response JSON: <200>
-
 {
   "results": [
     {
@@ -152,7 +151,7 @@ response JSON<200>
 }
 
 
-        
+
 
 GET /post/1    # show post which have id 1
 
