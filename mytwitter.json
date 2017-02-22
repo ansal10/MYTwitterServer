@@ -237,3 +237,84 @@ error JSON <400>
 {
   "error": "Cannot comment for unknown user or post"
 }
+
+
+PUT /post/id  : to update post with given id
+
+request JSON
+{
+  "post" : "new edited post"
+}
+
+success response JSON: <200>
+{
+  "result": "POST updated Successfully"
+}
+
+error response JSON: <400>
+{
+  "error": <Reason in string format>
+}
+
+
+
+
+
+
+
+
+
+
+
+DELETE /post/id : to delete post with given id
+
+success response JSON: <200>
+{
+  "result": "Deleted Successfully"
+}
+
+error response JSON: <400>
+{
+  "error": <Reason in string format>
+}
+
+
+
+
+
+
+PUT /comment/id  : to update comment with given id
+
+request JSON
+{
+  "post" : "new edited comment"
+}
+
+success response JSON: <200>
+{
+  "result": "Comment updated Successfully"
+}
+
+error response JSON: <400>
+{
+  "error": <Reason in string format>
+}
+
+
+
+
+
+
+DELETE /comment/id : to delete comment with given id
+
+success response JSON: <200>
+{
+  "result": "Deleted Successfully"
+}
+
+error response JSON: <400>
+{
+  "error": <Reason in string format>
+}
+
+

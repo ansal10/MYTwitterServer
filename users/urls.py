@@ -19,7 +19,7 @@ from users import views
 
 urlpatterns = [
     url(r'login$', view=views.login),  # POST(login)
-    url(r'(?P<username>[a-zA-Z0-9_]+)/post$', view=views.post),  # POST to post for user
+    url(r'(?P<username>[^/]+)/post$', view=views.post),  # POST to post for user
     url(r'(?P<username>[^/]+)/post/(?P<post_id>[0-9]+)/comment$', view=views.comment),
     # post comment for user x and post y
     url(r'^$', view=views.index),  # GET( list of users) , #POST (create users)
