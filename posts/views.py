@@ -33,7 +33,7 @@ def show(request, id=None):
         return JsonResponse({"result": "Deleted Successfully"})
     elif request.method == 'PUT':
         data = json.loads(request.body)
-        if data['post'] is None or data['post'].strip() == '':
+        if data.get('post') is None or data.get('post').strip() == '':
             return JsonResponse({"error": "Cannot update blank or empty post"}, status=400)
         post.post = data['post']
         post.save()
@@ -56,7 +56,7 @@ def comment_index(request, id=None):
         return JsonResponse({"result": "Deleted Successfully"})
     elif request.method == 'PUT':
         data = json.loads(request.body)
-        if data['comment'] is None or data['comment'].strip() == '':
+        if data.get('comment') is None or data.get('comment').strip() == '':
             return JsonResponse({"error": "Cannot update blank or empty comment"}, status=400)
         comment.comment = data['comment']
         comment.save()
