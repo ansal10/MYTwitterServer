@@ -18,5 +18,6 @@ from django.conf.urls import url
 from bills import views
 
 urlpatterns = [
-    url(r'^ola', view=views.ola_bill)
+    url(r'^ola', view=views.ola_bill),
+    url(r'^map_from_delhi', view=views.map_from_delhi)
 ]
