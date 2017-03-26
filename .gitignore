@@ -18,3 +18,4 @@ build/
 tests/report/
 .idea/
 .DS_Store
+env/
