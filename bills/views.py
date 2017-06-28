@@ -64,7 +64,6 @@ def ola_bill(request):
 		"car_name": car_name,
 		"driver_image": driver_image,
 		"map_image": map_image
-
 	}
 	return render(request, 'bills/ola.html', data)
 
