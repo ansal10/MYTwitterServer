@@ -1,7 +1,7 @@
 appdirs==1.4.0
 Django==1.10.5
 django-filter==1.0.1
-djangorestframework==3.5.4
+djangorestframework==3.11.2
 gevent==1.2.1
 greenlet==0.4.12
 Markdown==2.6.8
